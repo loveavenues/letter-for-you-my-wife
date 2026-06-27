@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Lock</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hue: 0;
+      --bg: hsl(var(--hue), 100%, 98%);
+      --fg: hsl(var(--hue), 30%, 20%);
+      --primary: hsl(var(--hue), 70%, 50%);
+      --primary-down: hsl(var(--hue), 70%, 40%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'DM Serif Display', serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 2em;
+    }
+
+    .passcode-container {
+      background: white;
+      border-radius: 1em;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 2em;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .passcode-title {
+      font-size: 1.4em;
+      margin-bottom: 1em;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5em;
+      margin-bottom: 1.5em;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: #ddd;
+      transition: background-color 0.3s;
+    }
+
+    .dot.filled {
+      background-color: var(--primary);
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1em;
+      justify-items: center;
+    }
+
+    .key {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      font-size: 1.2em;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.1s;
+    }
+
+    .key img {
+      width: 20px;
+      height: 20px;
+      margin-top: 4px;
+    }
+
+    .key:active {
+      transform: scale(0.95);
+    }
+
+    .key.zero {
+      grid-column: 2 / 3;
+    }
+
+    @media (max-width: 400px) {
+      .key {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="passcode-container">
+    <div class="passcode-title">Enter Your Love Code 💌</div>
+    <div class="dots">
+      <div class="dot" data-index="0"></div>
+      <div class="dot" data-index="1"></div>
+      <div class="dot" data-index="2"></div>
+      <div class="dot" data-index="3"></div>
+    </div>
+    <div class="keypad">
+      <!-- Heart icon for each number -->
+      <div class="key" data-key="1">1<img src="https://em-content.zobj.net/thumbs/120/apple/354/red-heart_2764-fe0f.png"></div>
+      <div class="key" data-key="2">2<img src="https://em-content.zobj.net/thumbs/120/apple/354/red-heart_2764-fe0f.png"></div>
+      <div class="key" data-key="3">3<img src="https://em-content.zobj.net/thumbs/120/apple/354/sparkling-heart_1f496.png"></div>
+      <div class="key" data-key="4">4<img src="https://em-content.zobj.net/thumbs/120/apple/354/heart-with-arrow_1f498.png"></div>
+      <div class="key" data-key="5">5<img src="https://em-content.zobj.net/thumbs/120/apple/354/heart-with-ribbon_1f49d.png"></div>
+      <div class="key" data-key="6">6<img src="https://em-content.zobj.net/thumbs/120/apple/354/revolving-hearts_1f49e.png"></div>
+      <div class="key" data-key="7">7<img src="https://em-content.zobj.net/thumbs/120/apple/354/two-hearts_1f495.png"></div>
+      <div class="key" data-key="8">8<img src="https://em-content.zobj.net/thumbs/120/apple/354/growing-heart_1f497.png"></div>
+      <div class="key" data-key="9">9<img src="https://em-content.zobj.net/thumbs/120/apple/354/red-heart_2764-fe0f.png"></div>
+      <div class="key zero" data-key="0">0<img src="https://em-content.zobj.net/thumbs/120/apple/354/heart-on-fire_2764-fe0f-200d-1f525.png"></div>
+    </div>
+  </div>
+
+  <script>
+    const correctCode = "1227"; // You can change this
+    let input = "";
+
+    const dots = document.querySelectorAll(".dot");
+    const keypad = document.querySelector(".keypad");
+
+    keypad.addEventListener("click", (e) => {
+      const key = e.target.closest(".key");
+      if (!key) return;
+      const value = key.getAttribute("data-key");
+
+      if (input.length < 4) {
+        input += value;
+        updateDots();
+      }
+
+      if (input.length === 4) {
+        if (input === correctCode) {
+          setTimeout(() => {
+            window.location.href = "letter.html";
+          }, 500);
+        } else {
+          alert("Oops! That’s not the love code 💔");
+          input = "";
+          updateDots();
+        }
+      }
+    });
+
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("filled", i < input.length);
+      });
+    }
+  </script>
+</body>
+</html>

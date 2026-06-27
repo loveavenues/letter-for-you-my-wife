@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Letter</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Hind', sans-serif;
+      background-color: #fbe2e0;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      transition: transform 2s;
+      z-index: 1;
+    }
+
+    .heart > img {
+      width: 50px;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .heart > img:hover {
+      animation: beat 2s ease-in-out infinite;
+    }
+
+    .message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 0 20px;
+      overflow-y: auto;
+      max-height: 0;
+      opacity: 0;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+      z-index: 0;
+      transition: all 1s ease;
+    }
+
+    .message.openNor {
+      max-height: 80vh;
+      padding: 20px;
+      opacity: 1;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-indent: 30px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.2); }
+      50% { transform: scale(0.9); }
+      75% { transform: scale(1.1); }
+    }
+
+    @keyframes heartMove {
+      0% { top: 50%; }
+      100% { top: 90%; transform: translate(-50%, 0); }
+    }
+
+    .openHer {
+      animation-name: heartMove;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
+    }
+
+    .closeHer {
+      animation-name: heartMove;
+      animation-duration: 2s;
+      animation-direction: reverse;
+      animation-fill-mode: forwards;
+    }
+
+    .closed {
+      display: none;
+    }
+
+    .beating > img {
+      animation: beat 2s ease-in-out infinite;
+    }
+
+    .openedHer {
+      top: 90%;
+      transform: translate(-50%, 0);
+    }
+
+    audio {
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .message {
+        max-width: 90%;
+        font-size: 0.9rem;
+      }
+
+      h1 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input id="messageState" type="checkbox" style="display:none"/>
+    <label for="messageState">
+      <div class="heart">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg" alt="Heart" />
+      </div>
+    </label>
+    <div class="message">
+      <h1>Dear, love lovee</h1>
+      <p>
+
+        I made this letter for you to tell you how grateful I am to have you. You always try to understand me, even though minsan mahirap. I'll never forget kung pano mo’ko inaalagaan kahit makulit ako minsan, I'll never forget the efforts you give me, and I'll never forget kung pano mo’ko napapa smile every day. Kahit badtrip ako sa isang bagay for hours, makausap ka lang kahit ilang minuto, parang nawawala na(sana gets mohuhuu, I'm bad at explainingTwT). 
+        
+        Please remember na I'm always here for you, kahit humarap man tayo sa kahit anong challenges—ikaw at ikaw pa rin ang pipiliin ko. Bakit?? Dahil mahal na mahal kita, drea. Mas pipiliin kong harapin natin lahat nang magkasama, kaysa i-give up lang lahat dahil sa hindi pagkakaintindihan. Kaya if you need someone to lean on, I'm always here for you. Hindi kita iju-judge or whatt, makikinig ako sa lahat ng ikwe-kwento mo. 
+        
+        Always remember din na lagi akong proud na proud sayo sa lahat ng naging achievements mo, I'll always cheer for you and be here whenever you need me. I'm your no.1 fan kaya! Pati na rin basher hehe, I love youu! 
+        
+        Tsaka, ’wag mo masyado i-pressure sarili mo this sy, hmm?? I know na mahirap na shs natinn, pero mag rest ka pa rin haaa?? ’wag mo i-overwork sarili mo, bad ’yan sa healthh. I know na kaya mo, and I believe in you. If need mo ng help sa isang bagay, I'm always here for you, okayy?? Though I can't promise I can help a lot, but I'm willing naman!
+        
+        Oo nga pala, dun sa tula na ginawa ko sayo before?? Don't think na isang beses lang ’yon hehe😏😏. Ini-improve ko pa and nag-iisip ng mga ilalagay o sasabihin, hindi ko nga lang alam kung kelan ulit. Basta meron pa ’yan haa, hindi lang ’yan isahann😛😛
+        
+        Tsaka, whenever na aalagaan kita and ginagastusan. ’wag mong iisiping napapagod ako or magsasawa ako, hmm?? I love taking care of you, kahit minsan makulit ka walang sawa kita aalagaan kaya ’wag ka mag so-sorry tuwing inaalagaan kitaa. 
+        
+        About dun naman sa pag spoil ko sayo, you know naman na I love doing thatt. ’wag ka matatakot mag ask sakin pag may gusto ka or need, kasi ibibigay ko sayo ’yan kahit ano pa ’yann. Hindi mo kailangan isipin na need mo siya suklian, binigay ko siya kasi gusto kong mapasaya ka. You deserve it, babyy. Deserve mong ma spoil at matrato na parang prinsesa. Kasi you deserve to be loved loudly and proudly, and I'm gonn do my best to love you and treat you right.
+        
+        That's all for now, want ko lang i-express kahit papano yung love ko for you. Nakita ko kasi sa tiktok na may ganto palang website, naisip ko, why not gawan ka dibaaa?? I LOVE YOU SO SOOOO MUCHH, BABY! Mahal na mahal kita, aasawahin pa kita, okeii??:DD
+        
+        -winwinn</p>
+    </div>
+    <audio id="bgMusic" src="./LibuLibong Buwan.mp3"></audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById("bgMusic");
+
+    $("#messageState").on("change", () => {
+      const isChecked = $("#messageState").is(":checked");
+
+      $(".message").toggleClass("openNor", isChecked);
+      $(".heart").removeClass("openHer closeHer openedHer beating");
+
+      if (isChecked) {
+        $(".heart").addClass("openHer");
+        $(".container").css("background", "linear-gradient(to bottom right, #ef9a9a, #fbe2e0)");
+        audio.play(); // Start music
+      } else {
+        $(".heart").addClass("closeHer");
+        $(".container").css("background", "linear-gradient(to bottom right, #fff2f0, #ffe0dc)");
+        audio.pause(); // Stop music
+        audio.currentTime = 0;
+      }
+    });
+
+    $(".heart").on('animationend webkitAnimationEnd oanimationend msAnimationEnd', function () {
+      if (!$(".heart").hasClass("closeHer")) {
+        $(".heart").addClass("openedHer beating");
+      } else {
+        $(".heart").removeClass("beating openedHer");
+      }
+      $(".heart").removeClass("openHer closeHer");
+    });
+  </script>
+</body>
+</html>
